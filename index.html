@@ -83,14 +83,16 @@
 		    <div class="row center">
 			    <br>
 			    <form>
-				<input name="difficulty" type="radio" id="learn" />
+				<input name="difficulty" type="radio" id="learn onclick="setDifficulty(0.0)" />
       				<label for="learn">Learn</label>
-				<input name="difficulty" type="radio" id="easy" />
+				<input name="difficulty" type="radio" id="easy" onclick="setDifficulty(0.20)" />
       				<label for="easy">Easy</label>
-				<input name="difficulty" type="radio" id="medium" />
+				<input name="difficulty" type="radio" id="medium" onclick="setDifficulty(0.50)" />
       				<label for="medium">Medium</label>
-				<input name="difficulty" type="radio" id="hard" />
+				<input name="difficulty" type="radio" id="hard" onclick="setDifficulty(0.80)" />
       				<label for="hard">Hard</label>
+				<input name="difficulty" type="radio" id="hardest" onclick="setDifficulty(1.0)" />
+      				<label for="hardest">Hardest</label>
 			    </form>
 			</div>
                 <h1 class="center-align question-text"></h1>
