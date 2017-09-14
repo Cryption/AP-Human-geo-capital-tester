@@ -134,7 +134,17 @@
                     difficulty: 0.6
                 });
             }
-
+           function setDifficulty(diff) {
+           		for (var i = 0; i < terms.length; i++) {
+                	var t = terms[i];
+                	questions.push({
+                   	question: question.format(t.term),
+                    	answer: t.definition.toLowerCase(),
+                    	difficulty: diff
+                });
+           		}          
+           }
+	setDifficulty(0.0);
             function maskPhrase(word, percent) {
                 var r = "";
                 for (var i = 0; i < word.length; i++) {
