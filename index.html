@@ -300,6 +300,7 @@
                     } else {
                         $(e.target).toggle();
 
+                        $(".mid span").text(currentQuestion.answer);
                         $(".mid span").animate({
                             color: "red"
                         }, 200);
