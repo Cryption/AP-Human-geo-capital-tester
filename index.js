@@ -180,7 +180,6 @@
                 showQuestion();
             }
 
-            showQuestion();
 
             $(".mid input").keyup(function (e) {
                 var txt = $(e.target).val();
