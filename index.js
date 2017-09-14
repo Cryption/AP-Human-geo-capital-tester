@@ -217,3 +217,13 @@
                     }
                 }
             });
+function setDifficulty(var diff) {
+           for (var i = 0; i < terms.length; i++) {
+                var t = terms[i];
+                questions.push({
+                    question: question.format(t.term),
+                    answer: t.definition.toLowerCase(),
+                    difficulty: diff
+                });
+            }          
+}
