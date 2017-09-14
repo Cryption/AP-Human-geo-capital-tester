@@ -125,26 +125,6 @@
 
             var questions = [];
             var currentQuestion = {};
-
-            for (var i = 0; i < terms.length; i++) {
-                var t = terms[i];
-                questions.push({
-                    question: question.format(t.term),
-                    answer: t.definition.toLowerCase(),
-                    difficulty: 0.6
-                });
-            }
-           function setDifficulty(diff) {
-           		for (var i = 0; i < terms.length; i++) {
-                	var t = terms[i];
-                	questions.push({
-                   	question: question.format(t.term),
-                    	answer: t.definition.toLowerCase(),
-                    	difficulty: diff
-                });
-           		}          
-           }
-	setDifficulty(0.0);
             function maskPhrase(word, percent) {
                 var r = "";
                 for (var i = 0; i < word.length; i++) {
@@ -163,7 +143,7 @@
                     $(".mid span").parent().width(60 * ("congrats").length);
                     $(".mid span").text("congrats");
                     $(".mid input").val('');
-                    $(".mid input").toggle();
+                    $(".mid input").show();
                     $(".mid span").animate({
                         color: "#D3D3D3"
                     }, 100);
@@ -226,3 +206,18 @@
                     }
                 }
             });
+           function setDifficulty(diff) {
+		   	questions = [];
+            		currentQuestion = {};
+           		for (var i = 0; i < terms.length; i++) {
+                	var t = terms[i];
+                	questions.push({
+                   	question: question.format(t.term),
+                    	answer: t.definition.toLowerCase(),
+                    	difficulty: diff
+                });
+           		}
+		   showQuestion();
+           }
+	setDifficulty(0.0);
+
