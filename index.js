@@ -147,7 +147,16 @@
 
                 return r;
             }
-
+           function setDifficulty(var diff) {
+           		for (var i = 0; i < terms.length; i++) {
+                	var t = terms[i];
+                	questions.push({
+                   		question: question.format(t.term),
+                    	answer: t.definition.toLowerCase(),
+                    	difficulty: diff
+                	});
+           		}          
+           }
             function showQuestion() {
                 if (questions.length == 0) {
                     $(".mid h1").text("ur done");
@@ -217,13 +226,3 @@
                     }
                 }
             });
-function setDifficulty(var diff) {
-           for (var i = 0; i < terms.length; i++) {
-                var t = terms[i];
-                questions.push({
-                    question: question.format(t.term),
-                    answer: t.definition.toLowerCase(),
-                    difficulty: diff
-                });
-            }          
-}
