@@ -10,8 +10,11 @@
                 font-family: 'Roboto Mono', monospace;
             }
 
-type="radio".with-gap:checked+label:after {
-background-color: lightgray !important;
+	[type="radio"]:checked+label:after, [type="radio"].with-gap:checked+label:after {
+    background-color: #d3d3d3 !important;
+	}
+			[type="radio"]:checked+label:after, [type="radio"].with-gap:checked+label:before, [type="radio"].with-gap:checked+label:after {
+    border: 2px solid #a9a9a9 !important;
 }
             .top {
                 position: absolute;
