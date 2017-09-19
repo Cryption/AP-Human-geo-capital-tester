@@ -1,118 +1,176 @@
 <html>
-	<head>
-		<title>the procrastinator machine</title>
-		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-        <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
 
-		<style>
-            * {
-                font-family: 'Roboto Mono', monospace;
+<head>
+    <title>the procrastinator machine</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        [type="radio"]:checked+label:after,
+        [type="radio"].with-gap:checked+label:after {
+            background-color: #d3d3d3 !important;
+        }
+
+        [type="radio"]:checked+label:after,
+        [type="radio"].with-gap:checked+label:before,
+        [type="radio"].with-gap:checked+label:after {
+            border: 2px solid #cecece !important;
+        }
+
+        .top {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            height: 98px;
+            width: 100%;
+            background-color: lightgray;
+            z-index: 9999;
+        }
+
+        .mid {
+            position: absolute;
+            top: 98px;
+            left: 0px;
+            height: calc(100% - 98px);
+            width: 100%;
+            background-color: white
+        }
+        .bottom {
+            position: absolute;
+            bottom: 50px;
+            left: 0px;
+            width: 100%;
+            background-color: white
+        }
+        .question-text {
+            padding-top: 15%;
+        }
+
+        .mid input {
+            font-size: 5rem;
+            height: 5rem;
+            letter-spacing: 1rem;
+            transform: translateY(-57px);
+        }
+
+        .mid span {
+            font-size: 5rem;
+            height: 5rem;
+            letter-spacing: 1rem;
+            display: block;
+            pointer-events: none;
+            color: lightgray;
+            text-decoration: underline
+        }
+
+        .mid input:focus,
+        .mid input {
+            border-bottom: none !important;
+            box-shadow: none !important;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        String.prototype.format = function() {
+            var s = this,
+            i = arguments.length;
+
+            while (i--) {
+                s = s.replace(new RegExp('\\{' + i + '\\}', 'gm'), arguments[i]);
             }
-
-	[type="radio"]:checked+label:after, [type="radio"].with-gap:checked+label:after {
-    background-color: #d3d3d3 !important;
-	}
-			[type="radio"]:checked+label:after, [type="radio"].with-gap:checked+label:before, [type="radio"].with-gap:checked+label:after {
-    border: 2px solid #cecece !important;
-}
-            .top {
-                position: absolute;
-                top: 0px;
-                left: 0px;
-                height: 98px;
-                width: 100%;
-                background-color: lightgray;
-		    z-index: 9999;
-            }
-
-            .mid {
-                position: absolute;
-                top: 98px;
-                left: 0px;
-                height: calc(100% - 98px);
-                width: 100%;
-                background-color: white
-            }
-
-            .question-text {
-                padding-top: 15%;
-            }
-
-            .mid input {
-                font-size: 5rem;
-                height: 5rem;
-                letter-spacing: 1rem;
-                transform: translateY(-57px);
-            }
-
-            .mid span {
-                font-size: 5rem;
-                height: 5rem;
-                letter-spacing: 1rem;
-                display: block;
-                pointer-events: none;
-                color: lightgray;
-                text-decoration: underline
-            }
-
-            .mid input:focus, .mid input {
-                border-bottom: none !important;
-                box-shadow: none !important;
-            }
-		</style>
-	</head>
-	<body>
-        <script>
-            String.prototype.format = function () {
-                var s = this,
-                    i = arguments.length;
-
-                while (i--) {
-                    s = s.replace(new RegExp('\\{' + i + '\\}', 'gm'), arguments[i]);
-                }
-                return s;
-            };
-        </script>
-
-		<div class="top">
-			<h3 class="center-align">the procrastinator machine</h3>
-			
-			
-		    <div class="row center">
-			    <br>
-			    <form>
-				<input name="difficulty" type="radio" id="learn" onclick="setDifficulty(0.0)" />
-      				<label for="learn">Learn</label>
-				<input name="difficulty" type="radio" id="easy" onclick="setDifficulty(0.20)" />
-      				<label for="easy">Easy</label>
-				<input name="difficulty" type="radio" id="medium" onclick="setDifficulty(0.50)" />
-      				<label for="medium">Medium</label>
-				<input name="difficulty" type="radio" id="hard" onclick="setDifficulty(0.80)" />
-      				<label for="hard">Hard</label>
-				<input name="difficulty" type="radio" id="hardest" onclick="setDifficulty(1.0)" />
-      				<label for="hardest">Hardest</label>
-			    </form>
-			</div>
-		</div>
-
-		<div class="mid">
-            <div class="container">
-                <h1 class="center-align question-text"></h1>
-                <div class="row center-align">
-                    <div class="center-align" style="display: inline-block; width: 300px; white-space: nowrap">
-                        <span></span>
-                        <input />
-                    </div>
+            return s;
+        };
+    </script>
+    <div class="top">
+        <h3 class="center-align">the procrastinator machine</h3>
+        <div class="row center">
+            <br>
+            <form>
+                <input name="difficulty" type="radio" id="learn" onclick="setDifficulty(0.0)" />
+                <label for="learn">Learn</label>
+                <input name="difficulty" type="radio" id="easy" onclick="setDifficulty(0.20)" />
+                <label for="easy">Easy</label>
+                <input name="difficulty" type="radio" id="medium" onclick="setDifficulty(0.50)" />
+                <label for="medium">Medium</label>
+                <input name="difficulty" type="radio" id="hard" onclick="setDifficulty(0.80)" />
+                <label for="hard">Hard</label>
+                <input name="difficulty" type="radio" id="hardest" onclick="setDifficulty(1.0)" />
+                <label for="hardest">Hardest</label>
+            </form>
+        </div>
+    </div>
+    <div class="mid">
+        <div class="container">
+            <h1 class="center-align question-text"></h1>
+            <div class="row center-align">
+                <div class="center-align" style="display: inline-block; width: 300px; white-space: nowrap">
+                    <span></span>
+                    <input />
                 </div>
             </div>
-		</div>
+        </div>
+    </div>
+    <div class="bottom">
+        <div class="container">
+            <div class="row col s12 center">
+                <button class="btn black white-text center waves-effect waves-light hoverable" onclick="newTerms()">New Study Material</button>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="new-terms">
+        <div class="modal-content">
+            <div class="container">
+                <div class="row center">
+                    <form class="col s12">
+                        <div class="row">
+                            <div class="input-field col s12">
+                              <textarea id="terms" class="materialize-textarea" placeholder="term1 - definition1"></textarea>
+                              <label for="terms">Terms</label>
+                          </div>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn black white-text center waves-effect waves-light hoverable modal-close" onclick="addTerms(document.getElementById('terms').value)">Submit</button>
+    </div>
+</div>
 
-        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-        <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+<script>
+    var terms = [];
+    var questionTerm = "definition"
+    var question = "What is the " + questionTerm + " of {0}?"
 
+    $('.modal').modal();
+    function newTerms() {
+        $('#new-terms').modal('open');  
+    }
+    function addTerms(thingy) {
+        var lines = thingy.split("\n");
+        for(var i = 0; i < lines.length; i++) {
 
-        <script src="index.js"> </script>
-	</body>
+            var line = lines[i].split(" - ");
+
+            console.log(line[0] + " means " + line[1]);
+
+            terms.push({term: line[0], definition: line[1]});
+
+        }
+        $( "#learn" ).click();
+    }
+</script>
+<script src="index.js">
+</script>
+</body>
+
 </html>
