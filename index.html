@@ -28,7 +28,7 @@
             height: 98px;
             width: 100%;
             background-color: lightgray;
-            z-index: 9999;
+            z-index: 999;
         }
 
         .mid {
@@ -91,18 +91,16 @@
         <h3 class="center-align">the procrastinator machine</h3>
         <div class="row center">
             <br>
-            <form>
-                <input name="difficulty" type="radio" id="learn" onclick="setDifficulty(0.0)" />
+                <input name="difficulty" type="radio" id="learn" style="z-index: 999;" onclick="setDifficulty(0.0)" />
                 <label for="learn">Learn</label>
-                <input name="difficulty" type="radio" id="easy" onclick="setDifficulty(0.20)" />
+                <input name="difficulty" type="radio" id="easy" style="z-index: 999;" onclick="setDifficulty(0.20)" />
                 <label for="easy">Easy</label>
-                <input name="difficulty" type="radio" id="medium" onclick="setDifficulty(0.50)" />
+                <input name="difficulty" type="radio" id="medium" style="z-index: 999;" onclick="setDifficulty(0.50)" />
                 <label for="medium">Medium</label>
-                <input name="difficulty" type="radio" id="hard" onclick="setDifficulty(0.80)" />
+                <input name="difficulty" type="radio" id="hard" style="z-index: 999;" onclick="setDifficulty(0.80)" />
                 <label for="hard">Hard</label>
-                <input name="difficulty" type="radio" id="hardest" onclick="setDifficulty(1.0)" />
+                <input name="difficulty" type="radio" id="hardest" style="z-index: 999;" onclick="setDifficulty(1.0)" />
                 <label for="hardest">Hardest</label>
-            </form>
         </div>
     </div>
     <div class="mid">
@@ -123,7 +121,7 @@
             </div>
         </div>
     </div>
-    <div class="modal" id="new-terms">
+    <div class="modal" id="new-terms" style="z-index: 9999;">
         <div class="modal-content">
             <div class="container">
                 <div class="row center">
